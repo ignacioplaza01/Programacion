@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ropa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <div class="alert alert-success display-1">Lista de Ropas</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    {%if Ropa %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo de Ropa</th>
+                <th>Genero</th>
+                <th>Talla</th>
+                <th>Temporada</th>
+                <th>Estilo</th>
+                <th>Marca</th>
+                <th>Cantidad</th>
+                <th>Tienda</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in Ropa %}
+            <tr>
+                <td scope="row">{{ a.id }}</td>
+                <td>{{ a.tipoRopa }}</td>
+                <td>{{ a.genero }}</td>
+                <td>{{ a.talla }}</td>
+                <td>{{ a.temporada }}</td>
+                <td>{{ a.estilo }}</td>
+                <td>{{ a.marca }}</td>
+                <td>{{ a.cantidad }}</td>
+                <td>{{ a.tienda }}</td>
+                <td><a href="/Actualizar/{{ a.id }}" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i>Actualizar</td>
+                <td><a href="/Eliminar/{{ a.id }}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>Eliminar</td>    
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-info">No se encuentra Ropa registrada</div>
+    {% endif %}  
+    
+    <a href="/listadoropa" class="btn btn-info">Agregar Ropa</a>
+    <a href="/" class="btn btn-info float-end" >Volver</a>
+    
+
+
+</body>
+</html>
